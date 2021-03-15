@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  
+import { Paper } from '@material-ui/core';
+
+export const StyledPaper = styled(Paper)`
+  display: flex !important;
+  padding: 8px 16px;
 `;

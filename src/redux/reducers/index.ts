@@ -1,9 +1,16 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import addresses from './addresses'
+import addresses, { AddressesReducer } from './addresses';
+import app, { AppReducer } from './app';
+
+export interface RootState {
+  app: AppReducer,
+  addresses: AddressesReducer;
+}
 
 const rootReducer = combineReducers({
-  addresses
-})
+  app,
+  addresses,
+});
 
-export default rootReducer
+export default rootReducer;

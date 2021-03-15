@@ -1,14 +1,19 @@
 import React from 'react';
 
 import {
-  AppBar, Box, Button, IconButton, Toolbar, Typography,
+  AppBar, Box, Toolbar, Typography,
 } from '@material-ui/core';
 
-import { Menu } from '@material-ui/icons';
+import { LocationOn } from '@material-ui/icons';
 
 const Header = () => (
   <AppBar position="static">
-    <Toolbar />
+    <Toolbar>
+      <Box display="flex" justifyContent="center" alignItems="center" width="100%" padding="24px 0">
+        <LocationOn color="secondary" fontSize="large" />
+        <Typography component="h1" variant="h4">Procurar CEP</Typography>
+      </Box>
+    </Toolbar>
   </AppBar>
 );
 

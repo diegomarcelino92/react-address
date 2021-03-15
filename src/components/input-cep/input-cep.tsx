@@ -1,14 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { TextField } from '@material-ui/core';
-import InputMask from 'react-input-mask';
+import { connect, ConnectedProps } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
-// import { Container } from './styles';
+import { Box, IconButton, InputBase } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
 
-const InputCep: React.FC = () => (
-  <InputMask mask="99/99/9999">
-    <TextField type="tel" />
-  </InputMask>
+import ReactInputMask from 'react-input-mask';
+
+import { Creators } from 'redux/reducers/addresses';
+
+import { StyledPaper } from './styles';
+
+const mapStateToProps = () => ({
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
+  {
+    getAddressRequest: Creators.getAddressRequest,
+  },
+  dispatch,
 );
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
-export default InputCep;
+type InputCepProps = ConnectedProps<typeof connector>
+
+const InputCep = ({ getAddressRequest }: InputCepProps) => {
+  const [value, setValue] = useState('');
+
+  function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
+    setValue(target.value);
+  }
+
+  function onSubmit() {
+    getAddressRequest(value);
+  }
+
+  return (
+    <Box maxWidth="800px" width="100%" margin="20px">
+      <StyledPaper>
+        <ReactInputMask mask="99999-999" value={value} onChange={handleChange}>
+          {() => (
+            <InputBase type="tel" fullWidth placeholder="Digite um CEP para procurar o endereço" />
+          )}
+        </ReactInputMask>
+        <IconButton onClick={onSubmit}>
+          <Search />
+        </IconButton>
+      </StyledPaper>
+    </Box>
+  );
+};
+
+export default connector(InputCep);

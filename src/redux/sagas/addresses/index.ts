@@ -1,11 +1,10 @@
 import { all, fork } from 'redux-saga/effects';
 
-import addressRequest from './addressRequest';
-
+import getAddressRequest from './getAddressRequest';
 
 function* appSagas() {
   yield all([
-    fork(addressRequest),
+    fork(getAddressRequest),
   ]);
 }
 
