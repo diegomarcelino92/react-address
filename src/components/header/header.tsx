@@ -8,17 +8,7 @@ import { Menu } from '@material-ui/icons';
 
 const Header = () => (
   <AppBar position="static">
-    <Toolbar>
-      <Box maxWidth="1280px" display="flex">
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <Menu />
-        </IconButton>
-        <Typography variant="h6">
-          News
-        </Typography>
-        <Button color="inherit">Login</Button>
-      </Box>
-    </Toolbar>
+    <Toolbar />
   </AppBar>
 );
 
