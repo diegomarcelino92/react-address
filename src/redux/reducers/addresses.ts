@@ -1,6 +1,8 @@
-import { Address, ReducerError } from 'common-types/address';
+import { AnyAction } from 'redux';
 import { createReducer, createActions } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
+
+import { Address, ReducerError } from 'common-types/address';
 
 export interface AddressesReducer {
   address: Address;
@@ -8,8 +10,20 @@ export interface AddressesReducer {
   loading: boolean
 }
 
-export const { Types, Creators } = createActions({
-  getAddressRequest: ['page', 'category'],
+export type AddressCreators = {
+  getAddressRequest(cep: string): AnyAction
+  getAddressSuccess(data: Address): AnyAction
+  getAddressError(error: ReducerError): AnyAction
+}
+
+export type AddressTypes = {
+  GET_ADDRESS_REQUEST: string;
+  GET_ADDRESS_SUCCESS: string;
+  GET_ADDRESS_ERROR: string
+}
+
+export const { Types, Creators } = createActions<AddressTypes, AddressCreators>({
+  getAddressRequest: ['cep'],
   getAddressSuccess: ['address'],
   getAddressError: ['error'],
 });
@@ -20,12 +34,12 @@ const INITIAL_STATE = Immutable<AddressesReducer>({
   loading: false,
 });
 
-const getAddressRequest = (state = INITIAL_STATE) => state.merge({ loading: true });
+const getAddressRequest = (state = INITIAL_STATE) => state.merge({ loading: true, address: {} });
 const getAddressSuccess = (state = INITIAL_STATE, { address }: { address: Address }) => state.merge({ address, loading: false });
 const getAddressError = (state = INITIAL_STATE, { error }: { error: ReducerError }) => state.merge({ loading: false, error });
 
 export default createReducer(INITIAL_STATE, {
-  [Types.GET_ADDRESS_REQUEST]: getAddressError,
-  [Types.GET_ADDRESS_SUCCESS]: getAddressRequest,
-  [Types.GET_ADDRESS_ERROR]: getAddressSuccess,
+  [Types.GET_ADDRESS_REQUEST]: getAddressRequest,
+  [Types.GET_ADDRESS_SUCCESS]: getAddressSuccess,
+  [Types.GET_ADDRESS_ERROR]: getAddressError,
 });

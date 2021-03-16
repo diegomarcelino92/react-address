@@ -3,6 +3,7 @@ import immutable from 'seamless-immutable';
 
 import { SnackbarProps } from '@material-ui/core';
 import { Color } from '@material-ui/lab';
+
 import { AnyAction } from 'redux';
 
 type SnackBarProps = SnackbarProps & { severity?: Color }
@@ -18,7 +19,7 @@ export type AppTypes = {
 }
 
 export const { Types, Creators } = createActions<AppTypes, AppCreators>({
-  show_snackbar: ['props'],
+  showSnackbar: ['props'],
 });
 
 const INITIAL_STATE = immutable<AppReducer>({

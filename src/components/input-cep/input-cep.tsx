@@ -12,8 +12,7 @@ import { Creators } from 'redux/reducers/addresses';
 
 import { StyledPaper } from './styles';
 
-const mapStateToProps = () => ({
-});
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -21,6 +20,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   },
   dispatch,
 );
+
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type InputCepProps = ConnectedProps<typeof connector>
@@ -36,12 +36,32 @@ const InputCep = ({ getAddressRequest }: InputCepProps) => {
     getAddressRequest(value);
   }
 
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === 'Enter' && value.length === 9) {
+      onSubmit();
+    }
+  }
+
   return (
-    <Box maxWidth="800px" width="100%" padding={{ md: '20px', sm: '10px', xs: '10px' }}>
+    <Box
+      maxWidth="800px"
+      width="100%"
+      padding={{ md: '20px', sm: '10px', xs: '10px' }}
+    >
       <StyledPaper>
-        <ReactInputMask mask="99999-999" value={value} onChange={handleChange}>
+        <ReactInputMask
+          mask="99999-999"
+          value={value}
+          onChange={handleChange}
+          onKeyDownCapture={handleKeyDown}
+        >
           {() => (
-            <InputBase type="tel" fullWidth placeholder="Digite um CEP para procurar o endereço" />
+            <InputBase
+              type="tel"
+              fullWidth
+              placeholder="Digite um CEP para procurar o endereço"
+              onKeyDownCapture={handleKeyDown}
+            />
           )}
         </ReactInputMask>
         <IconButton onClick={onSubmit}>

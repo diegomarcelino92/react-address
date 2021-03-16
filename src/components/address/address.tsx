@@ -1,31 +1,84 @@
 import React from 'react';
 
-import { Box, Typography } from '@material-ui/core';
-import SkeletonAddress from './address-skeleton';
+import { connect, ConnectedProps } from 'react-redux';
 
+import { Box, Typography } from '@material-ui/core';
+
+import { RootState } from 'redux/reducers';
+
+import SkeletonAddress from './address-skeleton';
 import { Image } from './styles';
 
-export interface AddressProps {
-  loading?: boolean
-}
+const mapStateToProps = ({ addresses }: RootState) => ({
+  address: addresses.getIn(['address']),
+  loading: addresses.getIn(['loading']),
+});
 
-const Address = ({ loading }: AddressProps) => (
-  <Box height="250px" width="calc(100% - 20px)" alignItems="center" bgcolor="#fff" maxWidth="500px" padding="10px" borderRadius="10px" marginTop="30px">
-    <Typography variant="h6">
-      Endereço
-    </Typography>
+const connector = connect(mapStateToProps);
 
-    <Box display="flex" marginTop="10px">
-      <Image src="localizacao.png" />
+type AddressProps = ConnectedProps<typeof connector>
+
+const Address = ({ loading, address }: AddressProps) => (
+  <Box
+    display="flex"
+    alignItems="center"
+    height="250px"
+    width="calc(100% - 20px)"
+    borderRadius="10px"
+    marginTop="30px"
+    bgcolor="#fff"
+    maxWidth="500px"
+    padding="10px"
+  >
+    <Image src="localizacao.png" />
+    {address.cep && (
       <Box flex="1">
-        <Typography color="primary" variant="h5">Rua Elis Abraaão</Typography>
-        <Typography color="primary" variant="h5">Bairo Paulo Godoy</Typography>
-        <Typography color="primary" variant="h5">São Paulo/SP</Typography>
-      </Box>
+        <Typography
+          color="textPrimary"
+          variant="h6"
+        >
+          {address.logradouro}
+        </Typography>
 
-      {loading && <SkeletonAddress />}
-    </Box>
+        <Typography
+          color="textPrimary"
+          variant="h6"
+        >
+          {`Bairro ${address.bairro}`}
+        </Typography>
+
+        <Typography
+          color="textPrimary"
+          variant="h6"
+        >
+          {`${address.localidade}/${address.uf}`}
+        </Typography>
+
+        <Typography
+          color="textSecondary"
+          variant="h6"
+        >
+          {address.cep}
+        </Typography>
+
+        <Typography
+          color="textSecondary"
+          variant="h6"
+        >
+          {`DDD: (${address.ddd})`}
+        </Typography>
+
+        <Typography
+          color="textSecondary"
+          variant="h6"
+        >
+          {`SIAFI: ${address.siafi}`}
+        </Typography>
+      </Box>
+    )}
+
+    {loading && <SkeletonAddress />}
   </Box>
 );
 
-export default Address;
+export default connector(Address);

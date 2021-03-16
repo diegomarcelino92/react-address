@@ -8,7 +8,9 @@ type MakeRequestParams = {
   query?: Query;
 }
 
-async function makeRequest({ endpoint, method, query }: MakeRequestParams) {
+async function makeRequest(
+  { endpoint, method, query }: MakeRequestParams,
+) {
   const { REACT_APP_API_URL } = process.env;
 
   const url = new URL(`${REACT_APP_API_URL}/${endpoint}`);
@@ -21,7 +23,7 @@ async function makeRequest({ endpoint, method, query }: MakeRequestParams) {
 }
 
 export const request = (endpoint: string) => ({
-  get: (query: Query) => makeRequest({ endpoint, query, method: 'get' }),
+  get: (query?: Query) => makeRequest({ endpoint, query, method: 'get' }),
   put: () => makeRequest({ endpoint, method: 'put' }),
   post: () => makeRequest({ endpoint, method: 'post' }),
   delete: () => makeRequest({ endpoint, method: 'delete' }),

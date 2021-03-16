@@ -1,5 +1,5 @@
 import { request } from 'utils/request';
 
 export const addressAPI = {
-  address: (cep: String) => request(`/address/${cep}`).get({ teste: 'teste' }),
+  address: (cep: string) => request(`address/${cep}`).get(),
 };
