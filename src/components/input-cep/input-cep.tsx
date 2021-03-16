@@ -3,16 +3,21 @@ import React, { useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import { Box, IconButton, InputBase } from '@material-ui/core';
+import {
+  Box, CircularProgress, IconButton, InputBase,
+} from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
 import ReactInputMask from 'react-input-mask';
 
+import { RootState } from 'redux/reducers';
 import { Creators } from 'redux/reducers/addresses';
 
 import { StyledPaper } from './styles';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (
+  { addresses }: RootState,
+) => ({ loading: addresses.getIn(['loading']) });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
@@ -25,7 +30,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type InputCepProps = ConnectedProps<typeof connector>
 
-const InputCep = ({ getAddressRequest }: InputCepProps) => {
+const InputCep = ({ getAddressRequest, loading }: InputCepProps) => {
   const [value, setValue] = useState('');
 
   function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
@@ -54,6 +59,7 @@ const InputCep = ({ getAddressRequest }: InputCepProps) => {
           value={value}
           onChange={handleChange}
           onKeyDownCapture={handleKeyDown}
+          disabled={loading}
         >
           {() => (
             <InputBase
@@ -64,8 +70,14 @@ const InputCep = ({ getAddressRequest }: InputCepProps) => {
             />
           )}
         </ReactInputMask>
-        <IconButton onClick={onSubmit}>
-          <Search />
+        <IconButton
+          onClick={onSubmit}
+          disabled={loading}
+          aria-label="Produrar"
+          title="Procurar"
+        >
+          {loading && <CircularProgress size={25} />}
+          {!loading && <Search />}
         </IconButton>
       </StyledPaper>
     </Box>

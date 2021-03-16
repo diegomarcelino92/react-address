@@ -12,10 +12,22 @@ function* getAddressRequest({ cep }: AddressRequestParams) {
     const data: Address = yield call(addressAPI.address, cep);
 
     yield put(Creators.getAddressSuccess(data));
-    yield put(AppCreators.showSnackbar({ open: true, severity: 'success', message: 'Endereço encontrado!' }));
+    yield put(
+      AppCreators.showSnackbar(
+        {
+          open: true,
+          severity: 'success',
+          message: 'Endereço encontrado!',
+        },
+      ),
+    );
   } catch (error) {
     yield put(Creators.getAddressError(error));
-    yield put(AppCreators.showSnackbar({ open: true, severity: 'error' }));
+    yield put(AppCreators.showSnackbar({
+      open: true,
+      severity: 'error',
+      message: 'Não encontramos nenhum endereço',
+    }));
   }
 }
 

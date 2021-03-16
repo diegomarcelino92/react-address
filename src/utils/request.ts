@@ -19,6 +19,8 @@ async function makeRequest(
 
   const response = await fetch(url.href, { method });
 
+  if (!response.ok) throw (response);
+
   return response.json();
 }
 
