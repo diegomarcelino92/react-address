@@ -1,13 +1,21 @@
 import React from 'react';
 
-import { Snackbar, SnackbarProps } from '@material-ui/core';
-import Alert, { Color } from '@material-ui/lab/Alert';
+import { connect, ConnectedProps } from 'react-redux';
 
-interface SnackBarProps extends SnackbarProps {
-  severity: Color;
-}
+import { Snackbar } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 
-const SnackBar = ({ severity, message }: SnackBarProps) => (
+import { RootState } from 'redux/reducers';
+
+const mapStateToProps = ({ app }: RootState) => ({
+  ...app.getIn(['snackbar']),
+});
+
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+const SnackBar = ({ severity, message }: PropsFromRedux) => (
   <Snackbar autoHideDuration={6000}>
     <Alert severity={severity}>
       {message}
@@ -15,4 +23,4 @@ const SnackBar = ({ severity, message }: SnackBarProps) => (
   </Snackbar>
 );
 
-export default SnackBar;
+export default connector(SnackBar);

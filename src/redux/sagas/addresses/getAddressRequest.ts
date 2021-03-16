@@ -4,6 +4,7 @@ import { put, takeLatest, call } from 'redux-saga/effects';
 
 import { addressAPI } from 'redux/api/address';
 import { Creators, Types } from 'redux/reducers/addresses';
+import { Creators as AppCreators } from 'redux/reducers/app';
 
 function* getAddressRequest() {
   try {
@@ -12,6 +13,7 @@ function* getAddressRequest() {
     yield put(Creators.getAddressSuccess(data));
   } catch (error) {
     yield put(Creators.getAddressError(error));
+    yield put(AppCreators.showSnackbar({ open: true, severity: 'error' }));
   }
 }
 

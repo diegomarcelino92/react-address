@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
+import { ImmutableObject } from 'seamless-immutable';
 
 import addresses, { AddressesReducer } from './addresses';
 import app, { AppReducer } from './app';
 
 export interface RootState {
-  app: AppReducer,
-  addresses: AddressesReducer;
+  app: ImmutableObject<AppReducer>,
+  addresses: ImmutableObject<AddressesReducer>;
 }
 
 const rootReducer = combineReducers({

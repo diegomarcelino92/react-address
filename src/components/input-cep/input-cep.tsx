@@ -37,7 +37,7 @@ const InputCep = ({ getAddressRequest }: InputCepProps) => {
   }
 
   return (
-    <Box maxWidth="800px" width="100%" margin="20px">
+    <Box maxWidth="800px" width="100%" padding={{ md: '20px', sm: '10px', xs: '10px' }}>
       <StyledPaper>
         <ReactInputMask mask="99999-999" value={value} onChange={handleChange}>
           {() => (
