@@ -3,6 +3,10 @@
 Projeto iniciado com [Create React App](https://github.com/facebook/create-react-app).
 
 
+## Requisitos
+
+- [Node JS](https://nodejs.org/en/download/);
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable);
 
 
 ## Script Disponíveis
