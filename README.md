@@ -35,7 +35,7 @@ Cria uma versão para producão, com minificação dos scripts, versões compat�
 Ejeta as configurações internas do webpack e babel para personalização.
 
 
-## Learn More
+## Mais
 
 Mais sobre a CLI do [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
