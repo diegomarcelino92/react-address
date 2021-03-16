@@ -1,6 +1,6 @@
-import { AnyAction } from 'redux';
 import { createReducer, createActions } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
+import { AnyAction } from 'redux';
 
 import { Address, ReducerError } from 'common-types/address';
 
