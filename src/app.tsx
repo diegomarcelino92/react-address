@@ -1,13 +1,15 @@
 import React from 'react';
 
-import Header from 'components/header';
-import Main from 'components/main';
 import SnackBar from 'components/snackbar';
+
+import Layout from 'components/layout';
+import Home from 'views/home';
 
 const App: React.FC = () => (
   <>
-    <Header />
-    <Main />
+    <Layout>
+      <Home />
+    </Layout>
 
     <SnackBar />
   </>

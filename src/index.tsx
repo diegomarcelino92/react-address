@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from 'components/app';
-import MaterialProvider from 'configuration/material-provider';
-import ReduxProvider from 'configuration/redux-provider';
-import { StyledProvider } from 'configuration/styled-components-proviser';
+import MaterialProvider from 'configurations/material-provider';
+import ReduxProvider from 'configurations/redux-provider';
+import { StyledProvider } from 'configurations/styled-components-provider';
+
+import App from './app';
 
 ReactDOM.render(
   <React.StrictMode>

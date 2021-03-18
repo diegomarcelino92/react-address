@@ -8,13 +8,10 @@ import Address from 'components/address';
 
 import { Container } from './styles';
 
-const Main: React.FC = () => (
+const Main: React.FC = ({ children }) => (
   <Container>
-    <Box bgcolor="#534bae" width="100%" paddingBottom="30px" display="flex" alignItems="center" flexDirection="column">
-      <Info />
-      <InputCep />
-    </Box>
-    <Address />
+    {children}
+
   </Container>
 );
 
