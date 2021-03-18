@@ -2,24 +2,29 @@ import React from 'react';
 
 import { Box } from '@material-ui/core';
 
+import { MAX_WIDTH } from 'configurations/constants';
+
 import InputCep from 'components/input-cep';
 import Address from 'components/address';
 import Info from 'components/info';
 
+import { Container } from './styles';
+
 const Home: React.FC = () => (
   <>
-    <Box
-      bgcolor="#534bae"
-      width="100%"
-      paddingBottom="30px"
-      display="flex"
-      alignItems="center"
-      flexDirection="column"
-    >
-      <Info />
-      <InputCep />
-    </Box>
-    <Address />
+    <Container>
+      <Box
+        width={MAX_WIDTH}
+        display="flex"
+        flexWrap="wrap"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Info />
+        <InputCep />
+        <Address />
+      </Box>
+    </Container>
   </>
 );
 

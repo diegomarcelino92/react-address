@@ -1,29 +1,25 @@
 import React from 'react';
 
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
+
+import { Text } from './styles';
 
 const Info: React.FC = () => (
   <Box
-    padding="30px 10px 20px 10px"
     display="flex"
     flexDirection="column"
     alignItems="center"
   >
-    <Typography
-      component="h2"
-      variant="h3"
-      color="secondary"
-    >
+    <Text>
       Procure e encontre CEPs pelo Brasil
 
-    </Typography>
+    </Text>
     <Box
       component="p"
       color="#fff"
-      fontSize="22px"
+      fontSize="20px"
     >
       Digite o CEP desejado no campo abaixo e encontre o endereço
-
     </Box>
   </Box>
 );
