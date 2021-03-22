@@ -1,14 +1,11 @@
 import React from 'react';
 
-import {
-  createMuiTheme,
-  CssBaseline, ThemeProvider,
-} from '@material-ui/core';
+import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
 
 export const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#000051',
+      main: '#00251a',
     },
     secondary: {
       main: '#fdd835',
@@ -38,7 +35,7 @@ export const theme = createMuiTheme({
 });
 
 interface MaterialProviderProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const MaterialProvider = ({ children }: MaterialProviderProps) => (
