@@ -1,6 +1,7 @@
-# PROJETO REACT BUSCAR ENDEREÇO DA API PÚBLICA VIACEP
+# PROJETO REACT BUSCAR ENDEREÇO PELO CEP
 
 Projeto iniciado com [Create React App](https://github.com/facebook/create-react-app).
+Faz a busca na API [Projeto Express](https://github.com/diegomarcelino92/express-sequelize-redis-jest)
 
 
 ## Requisitos
