@@ -22,12 +22,11 @@
     "rootDir": ".",
     "baseUrl": "./src",
     "typeRoots": [
-      "./node_modules/@types/*",
-      "./src/@types/*"
+      "./node_modules/@types",
+      "./src/@types"
     ]
   },
   "include": [
-    "./src",
     "**/*.ts",
     "**/*.tsx"
   ]

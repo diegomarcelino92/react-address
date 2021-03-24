@@ -1,4 +1,3 @@
-import { Address } from 'common-types/address';
 import { put, takeLatest, call } from 'redux-saga/effects';
 
 import { Creators, Types } from 'redux/reducers/addresses';

@@ -21,8 +21,14 @@
   },
   "plugins": [
     "react",
+    "react-hooks",
     "@typescript-eslint"
   ],
+  "globals": {
+    "React": "writable",
+    "ReducerError": "readonly",
+    "Address": "readonly"
+  },
   "rules": {
     "no-use-before-define": "off",
     "@typescript-eslint/no-unused-vars": [
@@ -61,6 +67,12 @@
       {
         "code": 90,
         "tabWidth": 2
+      }
+    ],
+    "no-undef": [
+      "error",
+      {
+        "typeof": true
       }
     ]
   }

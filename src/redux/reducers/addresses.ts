@@ -2,8 +2,6 @@ import { createReducer, createActions } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 import { AnyAction } from 'redux';
 
-import { Address, ReducerError } from 'common-types/address';
-
 export interface AddressesReducer {
   address: Address;
   error: ReducerError;
