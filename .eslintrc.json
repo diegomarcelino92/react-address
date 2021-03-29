@@ -5,11 +5,13 @@
     "node": true
   },
   "extends": [
-    "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "eslint:recommended",
     "airbnb",
-    "plugin:react/recommended"
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,37 +21,25 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "@typescript-eslint"
-  ],
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier"],
   "globals": {
     "React": "writable",
     "ReducerError": "readonly",
     "Address": "readonly"
   },
   "rules": {
+    "prettier/prettier": "error",
     "no-use-before-define": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error"
-    ],
+    "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "react/jsx-props-no-spreading": [
-      0
-    ],
+    "react/jsx-props-no-spreading": [0],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/no-use-before-define": [
-      "error"
-    ],
+    "@typescript-eslint/no-use-before-define": ["error"],
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".ts",
-          ".tsx"
-        ]
+        "extensions": [".ts", ".tsx"]
       }
     ],
     "import/prefer-default-export": "off",
@@ -60,13 +50,6 @@
       {
         "ts": "never",
         "tsx": "never"
-      }
-    ],
-    "max-len": [
-      "error",
-      {
-        "code": 90,
-        "tabWidth": 2
       }
     ],
     "no-undef": [

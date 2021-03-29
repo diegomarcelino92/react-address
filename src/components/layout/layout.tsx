@@ -5,8 +5,8 @@ import Main from './components/main';
 
 type LayoutType<T = {}> = React.FC<T> & {
   Main: React.ReactNode;
-  Header: React.ReactNode
-}
+  Header: React.ReactNode;
+};
 
 const Layout: LayoutType = ({ children }) => (
   <>

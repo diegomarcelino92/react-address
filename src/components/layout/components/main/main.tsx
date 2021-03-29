@@ -8,11 +8,6 @@ import Address from 'components/address';
 
 import { Container } from './styles';
 
-const Main: React.FC = ({ children }) => (
-  <Container>
-    {children}
-
-  </Container>
-);
+const Main: React.FC = ({ children }) => <Container>{children}</Container>;
 
 export default Main;

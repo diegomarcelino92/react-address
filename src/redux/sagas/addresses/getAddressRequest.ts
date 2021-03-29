@@ -4,7 +4,7 @@ import { Creators, Types } from 'redux/reducers/addresses';
 import { addressAPI } from 'redux/api/address';
 import { Creators as AppCreators } from 'redux/reducers/app';
 
-type AddressRequestParams = { cep: string, type: string }
+type AddressRequestParams = { cep: string; type: string };
 
 function* getAddressRequest({ cep }: AddressRequestParams) {
   try {
@@ -12,21 +12,21 @@ function* getAddressRequest({ cep }: AddressRequestParams) {
 
     yield put(Creators.getAddressSuccess(data));
     yield put(
-      AppCreators.showSnackbar(
-        {
-          open: true,
-          severity: 'success',
-          message: 'Endereço encontrado!',
-        },
-      ),
+      AppCreators.showSnackbar({
+        open: true,
+        severity: 'success',
+        message: 'Endereço encontrado!',
+      })
     );
   } catch (error) {
     yield put(Creators.getAddressError(error));
-    yield put(AppCreators.showSnackbar({
-      open: true,
-      severity: 'error',
-      message: 'Não encontramos nenhum endereço',
-    }));
+    yield put(
+      AppCreators.showSnackbar({
+        open: true,
+        severity: 'error',
+        message: 'Não encontramos nenhum endereço',
+      })
+    );
   }
 }
 

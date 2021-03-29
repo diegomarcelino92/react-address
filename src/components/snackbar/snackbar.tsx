@@ -14,19 +14,23 @@ const mapStateToProps = ({ app }: RootState) => ({
   ...app.getIn(['snackbar']),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {
-    showSnackbar: Creators.showSnackbar,
-  },
-  dispatch,
-);
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      showSnackbar: Creators.showSnackbar,
+    },
+    dispatch
+  );
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-type PropsFromRedux = ConnectedProps<typeof connector>
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
 const SnackBar = ({
-  severity, message, showSnackbar, open,
+  severity,
+  message,
+  showSnackbar,
+  open,
 }: PropsFromRedux) => {
   function onClose() {
     showSnackbar({ open: false });
@@ -38,11 +42,11 @@ const SnackBar = ({
       autoHideDuration={5000}
       onClose={onClose}
       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      action={(
+      action={
         <IconButton>
           <Close />
         </IconButton>
-      )}
+      }
     >
       <Alert severity={severity} variant="filled">
         {message}

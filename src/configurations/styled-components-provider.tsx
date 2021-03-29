@@ -6,11 +6,9 @@ import { theme } from './material-provider';
 // Acesso ao thema do material dentro do styled-components CSS-in-JS
 
 interface StyledProviderProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export const StyledProvider = ({ children }: StyledProviderProps) => (
-  <ThemeProvider theme={theme}>
-    {children}
-  </ThemeProvider>
+  <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );

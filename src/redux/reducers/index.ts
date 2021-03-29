@@ -5,7 +5,7 @@ import addresses, { AddressesReducer } from './addresses';
 import app, { AppReducer } from './app';
 
 export interface RootState {
-  app: ImmutableObject<AppReducer>,
+  app: ImmutableObject<AppReducer>;
   addresses: ImmutableObject<AddressesReducer>;
 }
 

@@ -4,7 +4,11 @@ import { connect, ConnectedProps } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
-  Box, CircularProgress, Fade, IconButton, InputBase,
+  Box,
+  CircularProgress,
+  Fade,
+  IconButton,
+  InputBase,
 } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
@@ -15,20 +19,21 @@ import { Creators } from 'redux/reducers/addresses';
 
 import { StyledPaper } from './styles';
 
-const mapStateToProps = (
-  { addresses }: RootState,
-) => ({ loading: addresses.getIn(['loading']) });
+const mapStateToProps = ({ addresses }: RootState) => ({
+  loading: addresses.getIn(['loading']),
+});
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {
-    getAddressRequest: Creators.getAddressRequest,
-  },
-  dispatch,
-);
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(
+    {
+      getAddressRequest: Creators.getAddressRequest,
+    },
+    dispatch
+  );
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
-type InputCepProps = ConnectedProps<typeof connector>
+type InputCepProps = ConnectedProps<typeof connector>;
 
 const InputCep = ({ getAddressRequest, loading }: InputCepProps) => {
   const [value, setValue] = useState('');
@@ -53,7 +58,6 @@ const InputCep = ({ getAddressRequest, loading }: InputCepProps) => {
         maxWidth="520px"
         width="100%"
         padding={{ md: '20px', sm: '10px', xs: '10px' }}
-
       >
         <StyledPaper variant="outlined">
           <ReactInputMask
@@ -69,7 +73,6 @@ const InputCep = ({ getAddressRequest, loading }: InputCepProps) => {
                 fullWidth
                 placeholder="Digite um CEP para procurar o endereço"
                 onKeyDownCapture={handleKeyDown}
-
               />
             )}
           </ReactInputMask>

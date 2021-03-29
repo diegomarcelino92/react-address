@@ -7,12 +7,12 @@ import rootSagas from '../sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const composeEnhancers = (window as any)
-  .__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+  (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   immutable(rootReducer),
-  composeEnhancers(applyMiddleware(sagaMiddleware)),
+  composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
 sagaMiddleware.run(rootSagas);

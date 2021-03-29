@@ -16,7 +16,7 @@ const mapStateToProps = ({ addresses }: RootState) => ({
 
 const connector = connect(mapStateToProps);
 
-type AddressProps = ConnectedProps<typeof connector>
+type AddressProps = ConnectedProps<typeof connector>;
 
 const Address = ({ loading, address }: AddressProps) => (
   <Slide in direction="up" timeout={1000}>
@@ -34,45 +34,27 @@ const Address = ({ loading, address }: AddressProps) => (
       <Image src="localizacao.png" />
       {address.cep && (
         <Box flex="1">
-          <Typography
-            color="textPrimary"
-            variant="h6"
-          >
+          <Typography color="textPrimary" variant="h6">
             {address.logradouro}
           </Typography>
 
-          <Typography
-            color="textPrimary"
-            variant="h6"
-          >
+          <Typography color="textPrimary" variant="h6">
             {`Bairro ${address.bairro}`}
           </Typography>
 
-          <Typography
-            color="textPrimary"
-            variant="h6"
-          >
+          <Typography color="textPrimary" variant="h6">
             {`${address.localidade}/${address.uf}`}
           </Typography>
 
-          <Typography
-            color="textSecondary"
-            variant="h6"
-          >
+          <Typography color="textSecondary" variant="h6">
             {address.cep}
           </Typography>
 
-          <Typography
-            color="textSecondary"
-            variant="h6"
-          >
+          <Typography color="textSecondary" variant="h6">
             {`DDD: (${address.ddd})`}
           </Typography>
 
-          <Typography
-            color="textSecondary"
-            variant="h6"
-          >
+          <Typography color="textSecondary" variant="h6">
             {`SIAFI: ${address.siafi}`}
           </Typography>
         </Box>

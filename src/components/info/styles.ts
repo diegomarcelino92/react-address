@@ -5,5 +5,5 @@ export const Text = styled.h2`
   font-weight: 900;
   margin-bottom: 0;
   margin-top: 10px;
-  color: #ffffff
+  color: #ffffff;
 `;
