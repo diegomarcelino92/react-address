@@ -57,6 +57,7 @@
       {
         "typeof": true
       }
-    ]
+    ],
+    "react/prop-types": "off"
   }
 }

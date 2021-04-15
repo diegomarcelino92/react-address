@@ -3,7 +3,7 @@ import React from 'react';
 import Header from './components/header';
 import Main from './components/main';
 
-type LayoutType<T = {}> = React.FC<T> & {
+type LayoutType<T = Record<string, unknown>> = React.FC<T> & {
   Main: React.ReactNode;
   Header: React.ReactNode;
 };

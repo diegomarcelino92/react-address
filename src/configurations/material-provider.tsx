@@ -19,7 +19,7 @@ export const theme = createMuiTheme({
       '@global': {
         body: {
           margin: 0,
-          height: '100vh',
+          // height: '100vh',
           backgroundColor: '#ebebeb',
           fontFamily: 'Noto Sans JP',
         },
